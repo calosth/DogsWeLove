@@ -13,6 +13,7 @@
 		EF74984023DB524000C30C51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF74983F23DB524000C30C51 /* Assets.xcassets */; };
 		EF74984323DB524000C30C51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF74984123DB524000C30C51 /* LaunchScreen.storyboard */; };
 		EF74984E23DB524000C30C51 /* DogsWeLoveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF74984D23DB524000C30C51 /* DogsWeLoveTests.swift */; };
+		EF74985A23DB53CB00C30C51 /* DogsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF74985923DB53CB00C30C51 /* DogsObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		EF74984923DB524000C30C51 /* DogsWeLoveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DogsWeLoveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF74984D23DB524000C30C51 /* DogsWeLoveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogsWeLoveTests.swift; sourceTree = "<group>"; };
 		EF74984F23DB524000C30C51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF74985923DB53CB00C30C51 /* DogsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogsObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		EF74983523DB523F00C30C51 /* DogsWeLove */ = {
 			isa = PBXGroup;
 			children = (
+				EF74985823DB53AD00C30C51 /* Model */,
 				EF74983623DB523F00C30C51 /* AppDelegate.swift */,
 				EF74983823DB523F00C30C51 /* SceneDelegate.swift */,
 				EF74983C23DB523F00C30C51 /* Main.storyboard */,
@@ -94,6 +97,14 @@
 				EF74984F23DB524000C30C51 /* Info.plist */,
 			);
 			path = DogsWeLoveTests;
+			sourceTree = "<group>";
+		};
+		EF74985823DB53AD00C30C51 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EF74985923DB53CB00C30C51 /* DogsObject.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +210,7 @@
 			files = (
 				EF74983723DB523F00C30C51 /* AppDelegate.swift in Sources */,
 				EF74983923DB523F00C30C51 /* SceneDelegate.swift in Sources */,
+				EF74985A23DB53CB00C30C51 /* DogsObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

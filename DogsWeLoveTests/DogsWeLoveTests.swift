@@ -9,26 +9,31 @@
 import XCTest
 @testable import DogsWeLove
 
-class DogsWeLoveTests: XCTestCase {
+class DogModelTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func test_DecodeDogWithJson() {
+        let data = dataFromJson()
+        let dog = try! JSONDecoder().decode(Dog.self, from: data)
+        
+        XCTAssertEqual(dog.name, "Macarena")
+        XCTAssertEqual(dog.description, "Lorem Ipsum")
+        XCTAssertEqual(dog.age, 1)
+        XCTAssertEqual(dog.url, "https://examplle.com/macarena.jpg")
     }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    // MARK: - Helpers
+    
+    func dataFromJson() -> Data {
+        let jsonDog =
+        """
+            {
+                "dogName": "Macarena",
+                "description": "Lorem Ipsum",
+                "age": 1,
+                "url": "https://examplle.com/macarena.jpg"
+            }
+        """
+        return jsonDog.data(using: .utf8)!
     }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+    
 }
