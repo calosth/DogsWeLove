@@ -1,5 +1,5 @@
 //
-//  DogsObject.swift
+//  Dog.swift
 //  DogsWeLove
 //
 //  Created by Carlos Linares on 24/01/20.
@@ -15,7 +15,7 @@ struct Dog {
     let url: String
 }
 
-extension Dog: Codable {
+extension Dog: Decodable, Equatable {
     enum DogCodingKeys: String, CodingKey {
         case name = "dogName"
         case description
@@ -30,5 +30,17 @@ extension Dog: Codable {
         description = try dogContainer.decode(String.self, forKey: .description)
         age = try dogContainer.decode(Int.self, forKey: .age)
         url = try dogContainer.decode(String.self, forKey: .url)
+    }
+}
+
+extension Dog {
+    static var allDogs: Resource<[Dog]> {
+        let url = URL(string: "https://api.myjson.com/bins/kp2e8")!
+        
+        return Resource(url: url)
+    }
+    
+    static func dataImage(from url: URL) -> Resource<Data> {
+        return Resource(url: url) { data in Result { data } }
     }
 }

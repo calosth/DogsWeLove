@@ -1,5 +1,5 @@
 //
-//  DogsWeLoveTests.swift
+//  DogModelTests.swift
 //  DogsWeLoveTests
 //
 //  Created by Carlos Linares on 24/01/20.
@@ -18,7 +18,23 @@ class DogModelTests: XCTestCase {
         XCTAssertEqual(dog.name, "Macarena")
         XCTAssertEqual(dog.description, "Lorem Ipsum")
         XCTAssertEqual(dog.age, 1)
-        XCTAssertEqual(dog.url, "https://examplle.com/macarena.jpg")
+        XCTAssertEqual(dog.url, "https://example.com/macarena.jpg")
+    }
+    
+    func test_allDogsCreateTheResourceWithUrl() {
+        let url = URL(string: "https://api.myjson.com/bins/kp2e8")!
+        
+        let resource = Resource<[Dog]>(url: url)
+        
+        XCTAssertEqual(Dog.allDogs.url, resource.url)
+    }
+    
+    func test_dateImageCreateResourceWithUrl() {
+        let url = URL(string: "https://example.com/dog.jpg")!
+        
+        let resource = Resource<[Data]>(url: url)
+        
+        XCTAssertEqual(Dog.dataImage(from: url).url, resource.url)
     }
     
     // MARK: - Helpers
@@ -30,10 +46,11 @@ class DogModelTests: XCTestCase {
                 "dogName": "Macarena",
                 "description": "Lorem Ipsum",
                 "age": 1,
-                "url": "https://examplle.com/macarena.jpg"
+                "url": "https://example.com/macarena.jpg"
             }
         """
         return jsonDog.data(using: .utf8)!
     }
+    
     
 }
