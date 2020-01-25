@@ -26,6 +26,13 @@ class DogListViewControllerTest: XCTestCase {
         XCTAssertTrue(sut.collectionView.dataSource === sut)
     }
     
+    func test_viewDidLoadSetCollectionViewDelegate() {
+        
+        sut.viewDidLoad()
+        
+        XCTAssertTrue(sut.collectionView.delegate === sut)
+    }
+    
     func test_fetchDogsIsCalledWhenViewDidLoad() {
         
         sut.viewDidLoad()
@@ -54,7 +61,7 @@ class DogListViewControllerTest: XCTestCase {
 
         sut.viewDidLoad()
         
-        _ = sut.collectionView(sut.collectionView, cellForItemAt: IndexPath(row: 0, section: 0))
+        _ = sut.collectionView(sut.collectionView, willDisplay: DogCollectionViewCell(), forItemAt: IndexPath(item: 0, section: 0))
         
         XCTAssertTrue(mockDataProvider.fetchImageCalled)
     }
@@ -78,7 +85,7 @@ extension DogListViewControllerTest {
             callback(dogs)
         }
         
-        func fetchImage(from url: URL?, callback: @escaping (UIImage) -> Void) {
+        func fetchImage(of dog: Dog, callback: @escaping (UIImage?) -> Void) {
             fetchImageCalled = true
         }
     }

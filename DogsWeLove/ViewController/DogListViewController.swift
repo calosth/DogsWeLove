@@ -46,6 +46,7 @@ final class DogListViewController: UIViewController {
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 21, bottom: 0, right: 21)
         
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(DogCollectionViewCell.self, forCellWithReuseIdentifier: DogCollectionViewCell.reuseIdentifier)
         collectionView.backgroundColor = UIColor.DogsWeLoveColorScheme.background
         view.backgroundColor = UIColor.DogsWeLoveColorScheme.background
@@ -85,8 +86,12 @@ extension DogListViewController: UICollectionViewDataSource, UICollectionViewDel
         let dog = dogs[indexPath.row]
         cell.configure(name: dog.name, description: dog.description, age: dog.age)
         
-        dogsProvider.fetchImage(from: URL(string: dog.url)) { cell.configure($0) }
-        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let cell = cell as! DogCollectionViewCell
+        let dog = dogs[indexPath.row]
+        dogsProvider.fetchImage(of: dog) { cell.configure($0) }
     }
 }
