@@ -15,8 +15,8 @@ protocol DogData {
 
 class DogsProvider: DogData {
     
-    var storage: Storage
-    var network: Network
+    private var storage: Storage
+    private var network: Network
     
     init(networkManager: Network, persistance: Storage) {
         self.storage = persistance
@@ -53,7 +53,7 @@ class DogsProvider: DogData {
             
             guard let url = URL(string: dog.url) else { return }
             
-            network.fetch(resource: Dog.dataImage(from: url)) { result in
+            NetworkManager().fetch(resource: Dog.dataImage(from: url)) { result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let dataImage):
