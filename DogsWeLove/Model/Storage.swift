@@ -6,11 +6,11 @@
 //  Copyright © 2020 Carlos Linares. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 protocol Storage {
     func fetchAllDogs() -> [Dog]
-    func fetchImage(of dog: Dog) -> UIImage?
+    func fetchDataImage(of dog: Dog) -> Data?
     func save(_ dogs: [Dog])
-    func save(_ image: UIImage, of dog: Dog)
+    func save(dataImage: Data, of dog: Dog)
 }

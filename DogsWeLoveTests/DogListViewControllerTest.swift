@@ -85,7 +85,7 @@ extension DogListViewControllerTest {
             callback(dogs)
         }
         
-        func fetchImage(of dog: Dog, callback: @escaping (UIImage?) -> Void) {
+        func fetchDataImage(of dog: Dog, callback: @escaping (Data) -> Void) {
             fetchImageCalled = true
         }
     }

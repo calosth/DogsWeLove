@@ -37,7 +37,7 @@ extension LocalDog {
         return localDog?.first
     }
     
-    func assignImage(_ data: Data) {
+    func assignDataImage(_ data: Data) {
         self.setValue(data, forKey: #keyPath(LocalDog.image))
     }
     

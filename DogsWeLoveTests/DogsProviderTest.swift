@@ -73,7 +73,7 @@ class DogsProviderTest: XCTestCase {
     func test_fetchDogImageCallLocalPersistanceToFetchImage() {
         let dog = makeDog()
         mockLocalPersistance.dogs = [makeDog()]
-        sut.fetchImage(of: dog) { _ in }
+        sut.fetchDataImage(of: dog) { _ in }
         
         XCTAssertTrue(mockLocalPersistance.fetchImageCalled)
     }
@@ -83,7 +83,7 @@ class DogsProviderTest: XCTestCase {
             
         mockNetworkManager.data = UIImage(named: "dog-test")!.pngData()!
 
-        sut.fetchImage(of: makeDog()) { _ in saveImageExpectation.fulfill() }
+        sut.fetchDataImage(of: makeDog()) { _ in saveImageExpectation.fulfill() }
         
         waitForExpectations(timeout: 1) { _ in
             XCTAssertTrue(self.mockLocalPersistance.saveImageCalled)
@@ -116,7 +116,7 @@ class MockLocalPersistance: Storage {
         return dogs
     }
     
-    func fetchImage(of dog: Dog) -> UIImage? {
+    func fetchDataImage(of dog: Dog) -> Data? {
         fetchImageCalled = true
         return nil
     }
@@ -125,7 +125,7 @@ class MockLocalPersistance: Storage {
         saveDogsCalled = true
     }
     
-    func save(_ image: UIImage, of dog: Dog) {
+    func save(dataImage: Data, of dog: Dog) {
         saveImageCalled = true
     }
     

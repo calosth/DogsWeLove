@@ -122,7 +122,7 @@ final class DogCollectionViewCell: UICollectionViewCell {
         ageLabel.text = DogCellTextFormatter.textFor(age: age)
     }
     
-    func configure(_ image: UIImage?) {
-        imageView.image = image
+    func configure(_ dataImage: Data) {
+        imageView.image = UIImage(data: dataImage)
     }
 }

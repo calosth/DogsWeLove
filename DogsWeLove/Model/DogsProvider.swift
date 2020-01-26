@@ -10,7 +10,7 @@ import UIKit
 
 protocol DogData {
     func fetchDogs(_ callback: @escaping ([Dog]) -> Void)
-    func fetchImage(of dog: Dog, callback: @escaping (UIImage?) -> Void)
+    func fetchDataImage(of dog: Dog, callback: @escaping (Data) -> Void)
 }
 
 class DogsProvider: DogData {
@@ -45,9 +45,9 @@ class DogsProvider: DogData {
         
     }
     
-    func fetchImage(of dog: Dog, callback: @escaping (UIImage?) -> Void) {
+    func fetchDataImage(of dog: Dog, callback: @escaping (Data) -> Void) {
         
-        if let image = storage.fetchImage(of: dog) {
+        if let image = storage.fetchDataImage(of: dog) {
             callback(image)
         } else {
             
@@ -56,11 +56,10 @@ class DogsProvider: DogData {
             network.fetch(resource: Dog.dataImage(from: url)) { result in
                 DispatchQueue.main.async {
                     switch result {
-                    case .success(let imageData):
+                    case .success(let dataImage):
                     
-                        guard let image = UIImage(data: imageData) else { return }
-                        self.storage.save(image, of: dog)
-                        callback(image)
+                        self.storage.save(dataImage: dataImage, of: dog)
+                        callback(dataImage)
                     
                     case .failure(_): break
                     }

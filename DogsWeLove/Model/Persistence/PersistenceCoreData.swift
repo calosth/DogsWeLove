@@ -7,7 +7,6 @@
 //
 
 import CoreData
-import UIKit
 
 class PersistenceCoreData: Storage {
     
@@ -34,13 +33,12 @@ class PersistenceCoreData: Storage {
 
     }
     
-    func fetchImage(of dog: Dog) -> UIImage? {
+    func fetchDataImage(of dog: Dog) -> Data? {
         guard
-            let localDog = LocalDog.fetchWith(name: dog.name, into: persistentContainer.viewContext),
-            let imageData = localDog.image
+            let localDog = LocalDog.fetchWith(name: dog.name, into: persistentContainer.viewContext)
             else { return nil }
         
-        return UIImage(data: imageData)
+        return localDog.image
         
     }
     
@@ -53,12 +51,12 @@ class PersistenceCoreData: Storage {
         
     }
     
-    func save(_ image: UIImage, of dog: Dog) {
+    func save(dataImage: Data, of dog: Dog) {
         guard
-            let localDog = LocalDog.fetchWith(name: dog.name, into: persistentContainer.viewContext),
-            let image = image.pngData() else { return }
+            let localDog = LocalDog.fetchWith(name: dog.name, into: persistentContainer.viewContext)
+            else { return }
         
-            localDog.assignImage(image)
+            localDog.assignDataImage(dataImage)
             saveInContext()
     }
     

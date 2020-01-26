@@ -106,6 +106,6 @@ extension DogListViewController: UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let cell = cell as! DogCollectionViewCell
         let dog = dogs[indexPath.row]
-        dogsProvider.fetchImage(of: dog) { cell.configure($0) }
+        dogsProvider.fetchDataImage(of: dog) { cell.configure($0) }
     }
 }

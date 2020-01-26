@@ -26,15 +26,15 @@ class DogCollectionViewCellTests: XCTestCase {
     }
     
     func test_configureImageSetsTheImageView() {
-        let image = UIImage(named: "dog-test")!
+        let imageData = UIImage(named: "dog-test")!.pngData()!
         
-        sut.configure(image)
+        sut.configure(imageData)
         
-        XCTAssertEqual(sut.imageView.image, image)
+        XCTAssertEqual(sut.imageView.image?.pngData()!, imageData)
     }
     
     func func_configureImage() {
-        sut.configure(UIImage())
+        sut.configure(UIImage().pngData()!)
         
         XCTAssertEqual(sut.imageView, UIImageView(image: UIImage()))
     }
