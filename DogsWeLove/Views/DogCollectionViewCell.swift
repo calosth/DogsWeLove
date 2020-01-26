@@ -119,7 +119,7 @@ final class DogCollectionViewCell: UICollectionViewCell {
     func configure(name: String, description: String, age: Int) {
         nameLabel.text = name
         descriptionLabel.text = description
-        ageLabel.text = "Almost \(age) years"
+        ageLabel.text = DogCellTextFormatter.textFor(age: age)
     }
     
     func configure(_ image: UIImage?) {
