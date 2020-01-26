@@ -13,5 +13,4 @@ This app uses an MVC architectural pattern trying to follow good design principl
 
 ### Frameworks used
  - UIKit
- - Foundation
  - Core Data
