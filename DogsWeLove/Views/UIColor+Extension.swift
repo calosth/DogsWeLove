@@ -10,8 +10,8 @@ import UIKit
 
 extension UIColor {
     struct DogsWeLoveColorScheme {
-        static var background = UIColor(named: "background")
-        static var textContent = UIColor(named: "text-content")
-        static var textTitle = UIColor(named: "text-title")
+        static var background = UIColor(named: "background") ?? UIColor.white
+        static var textContent = UIColor(named: "text-content") ?? UIColor.black
+        static var textTitle = UIColor(named: "text-title") ?? UIColor.black
     }
 }

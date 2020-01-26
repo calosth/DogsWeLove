@@ -34,8 +34,22 @@ final class DogListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationsBar()
         setupCollectionView()
         fetchDogs()
+    }
+    
+    private func setupNavigationsBar() {
+        self.title = "Dogs We Love"
+        
+        navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.DogsWeLoveColorScheme.textTitle,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24)]
+        navigationController?.navigationBar.barTintColor = UIColor.DogsWeLoveColorScheme.background
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.tintColor = UIColor.DogsWeLoveColorScheme.textTitle
+        
     }
     
     private func setupCollectionView() {
@@ -43,7 +57,7 @@ final class DogListViewController: UIViewController {
         flowLayout.scrollDirection = .vertical
         flowLayout.itemSize = CGSize(width: view.frame.width - sideMargins, height: 160)
         flowLayout.minimumLineSpacing = 33
-        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 21, bottom: 0, right: 21)
+        flowLayout.sectionInset = UIEdgeInsets(top: 33, left: 21, bottom: 0, right: 21)
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -62,7 +76,7 @@ final class DogListViewController: UIViewController {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: margin.topAnchor),
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: margin.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
         ])
     }
