@@ -85,7 +85,7 @@ final class DogCollectionViewCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            imageView.widthAnchor.constraint(equalToConstant: 98),
+            imageView.widthAnchor.constraint(equalToConstant: 120),
             imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.leftAnchor.constraint(equalTo: leftAnchor),
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
