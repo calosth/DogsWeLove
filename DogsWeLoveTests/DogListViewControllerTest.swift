@@ -69,7 +69,7 @@ class DogListViewControllerTest: XCTestCase {
 }
 
 extension DogListViewControllerTest {
-    class MockDogsProvider: DogDataProvider {
+    class MockDogsProvider: DogData {
         
         var fetchDogCalled = false
         var fetchImageCalled = false

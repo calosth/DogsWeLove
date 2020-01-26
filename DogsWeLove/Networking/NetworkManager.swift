@@ -21,7 +21,11 @@ extension URLSession: NetworkSession {
     }
 }
 
-class NetworkManager {
+protocol Network {
+    func fetch<Model>(resource: Resource<Model>, completion: @escaping ((Result<Model, Error>) -> Void))
+}
+
+class NetworkManager: Network {
     
     private let session: NetworkSession
     

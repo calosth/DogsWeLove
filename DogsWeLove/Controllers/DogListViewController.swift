@@ -12,7 +12,7 @@ import UIKit
 final class DogListViewController: UIViewController {
     
     let collectionView: UICollectionView
-    let dogsProvider: DogDataProvider
+    let dogsProvider: DogData
 
     private let flowLayout = UICollectionViewFlowLayout()
     private var dogs: [Dog] = [] {
@@ -21,7 +21,7 @@ final class DogListViewController: UIViewController {
         }
     }
     
-    init(dogProvider: DogDataProvider) {
+    init(dogProvider: DogData) {
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         self.dogsProvider = dogProvider
         super.init(nibName: nil, bundle: nil)
