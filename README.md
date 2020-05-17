@@ -1,3 +1,4 @@
+![CI](https://github.com/calosth/DogsWeLove/workflows/CI/badge.svg)
 # DogsWeLove
 iOS app that shows a list of dogs of the Isle of Dogs movie.
 
